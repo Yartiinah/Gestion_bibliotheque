@@ -31,12 +31,17 @@
                     <td><%= livre.getCategorie() != null ? livre.getCategorie().getNom() : "" %></td>
                     <td><%= livre.getIsbn() %></td>
                     <td><%= livre.getRestriction() %></td>
+                    <% model.Utilisateur user = (model.Utilisateur) session.getAttribute("user");
+                            if (user !=null && !user.getRole().equals("BIBLIOTHECAIRE")) {
+                    %>
                     <td>
-                        <form action="/livres/reserver" method="post" style="margin:0;">
+
+                        <form action="${pageContext.request.contextPath}/reservation/choisir-exemplaire" method="get" style="margin:0;">
                             <input type="hidden" name="livreId" value="<%= livre.getId() %>" />
                             <button type="submit">Réserver</button>
                         </form>
                     </td>
+                <% } %>
                 </tr>
         <%      }
             }

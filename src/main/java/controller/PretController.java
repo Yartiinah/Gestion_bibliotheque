@@ -47,6 +47,7 @@ public String creerPret(@RequestParam("adherentId") Integer adherentId,
     if (userObj == null || !"BIBLIOTHECAIRE".equals(((model.Utilisateur)userObj).getRole())) {
         return "redirect:/login";
     }
+    
     String message = pretService.creerPret(adherentId, referenceExemplaire, typePret);
     model.addAttribute("message", message);
     model.addAttribute("exemplaires", exemplaireRepository.findAll());

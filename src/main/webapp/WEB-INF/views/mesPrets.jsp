@@ -4,10 +4,22 @@
 <html>
 <head>
     <title>Mes prêts</title>
+    <style>
+        .page-container { max-width: 900px; margin: 30px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px #ccc; }
+        h2 { color: #2c3e50; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+        th { background: #34495e; color: #fff; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        tr:hover { background: #eaf6fb; }
+        button, a { background: #2980b9; color: #fff; border: none; padding: 7px 15px; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+        button:hover, a:hover { background: #1c5d8c; }
+    </style>
 </head>
 <body>
+<div class="page-container">
 <h2>Mes prêts</h2>
-<table border="1" cellpadding="5" cellspacing="0">
+<table>
 <tr>
     <th>Livre</th>
     <th>Exemplaire</th>
@@ -36,5 +48,6 @@
 <c:if test="${empty prets}">
     <p>Aucun prêt en cours ou passé.</p>
 </c:if>
+</div>
 </body>
 </html>

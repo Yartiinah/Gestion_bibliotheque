@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -47,5 +48,18 @@ public class AdherentService {
         inscriptionRepository.save(inscription);
 
         return "Adhérent inscrit avec succès. Veuillez procéder au paiement de la cotisation.";
+    }
+
+    public boolean isInscriptionValide(Adherent adherent) {
+        List<model.Inscription> inscriptions = inscriptionRepository.findByAdherentId(adherent.getId());
+        java.time.LocalDate today = java.time.LocalDate.now();
+        for (model.Inscription insc : inscriptions) {
+            java.time.LocalDate debut = insc.getDateInscription().toLocalDate();
+            java.time.LocalDate fin = insc.getDateExpiration().toLocalDate();
+            if ((debut.isEqual(today) || debut.isBefore(today)) && (fin.isEqual(today) || fin.isAfter(today)) && "valide".equals(insc.getStatut())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

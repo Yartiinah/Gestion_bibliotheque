@@ -3,8 +3,18 @@
 <html>
 <head>
     <title>Prolonger un prêt</title>
+    <style>
+        .page-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px #ccc; }
+        h2 { color: #2c3e50; text-align: center; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        label { font-weight: bold; color: #34495e; }
+        input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #2980b9; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background 0.2s; }
+        button:hover { background: #1c5d8c; }
+    </style>
 </head>
 <body>
+<div class="page-container">
     <h2>Prolonger un prêt</h2>
     <form method="post" action="${pageContext.request.contextPath}/prets/prolonger">
         <label for="pretId">Choisir un prêt à prolonger :</label>
@@ -21,5 +31,6 @@
     <c:if test="${not empty message}">
         <p style="color:blue;">${message}</p>
     </c:if>
+</div>
 </body>
 </html>

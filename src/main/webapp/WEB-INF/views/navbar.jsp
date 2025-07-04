@@ -13,11 +13,14 @@
 
             <a href="${pageContext.request.contextPath}/prets/rechercher">rechercher pret</a> |
             <a href="${pageContext.request.contextPath}/paiements">Paiements</a> |
-            <a href="${pageContext.request.contextPath}/login/logout">Déconnexion</a>
+            <a href="${pageContext.request.contextPath}/login/logout">Déconnexion</a> |
+            <a href="${pageContext.request.contextPath}/reservation/attente">Réservations à valider</a>
         </c:when>
         <c:when test="${sessionScope.user.role eq 'ADHERENT'}">
             <a href="${pageContext.request.contextPath}/livres/liste">Livres</a> |
             <a href="${pageContext.request.contextPath}/prets/mes-prets">Mes prêts</a> |
+            <a href="${pageContext.request.contextPath}/reservation/mesReservations">Mes reservations</a> |
+
             <a href="${pageContext.request.contextPath}/mon-compte">Mon compte</a> |
             <a href="${pageContext.request.contextPath}/login/logout">Déconnexion</a>
         </c:when>
